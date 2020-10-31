@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+    <style>
+        .remove{
+            background-color: blueviolet;
+            margin-top:10px;
+            color:white;
+            border-radius:5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center display-4">My<span class="text-primary">Contact</span>List</h1>
+        <form>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter your name" name="name">
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" class="form-control" id="address" placeholder="Enter your address" name="address">
+            </div>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="number" class="form-control" id="phone" placeholder="Enter your phoneno" name="phone">
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <input type="submit" value="Add Book" class="btn btn-block btn-primary">
+                </div>
+                <div class="col-lg-6">
+                    <input type="reset" value="Reset" class="btn-block btn-danger">
+                </div>
+            </div>
+    
+        </form>
+        <table class="table table-striped mt-5">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Phone No.</th>
+                <th><i class="fa fa-window-close" aria-hidden="true"></i></th>
+              </tr>
+            </thead>
+            <tbody id="book-list">
+                <!-- <td>ram</td>
+                <td>butwal</td>
+                <td>67847898</td> -->
+           </tbody>
+         </table>
+   </div>
+        
+
+
+
+
+
+    <!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    var nameInput=document.getElementById("name");
+    var addressInput=document.getElementById("address");
+    var phoneInput=document.getElementById("phone");
+    var butn=document.querySelector(".btn");
+    var bookList=document.getElementById("book-list");
+
+    butn.addEventListener("click",function(e){
+        e.preventDefault();
+        if(nameInput.value=="" && addressInput.value=="" && phoneInput.value==""){
+            alert("Enter any value");
+        }
+        else{
+            var bookListRow=document.createElement("tr");
+            var newName=document.createElement("td");
+            newName.innerHTML=nameInput.value;
+            bookListRow.appendChild(newName);
+
+            var newAddress=document.createElement("td");
+            newAddress.innerHTML=addressInput.value;
+            bookListRow.appendChild(newAddress);
+
+            var newPhone=document.createElement("td");
+            newPhone.innerHTML=phoneInput.value;
+            bookListRow.appendChild(newPhone);
+
+            var remove=document.createElement('button');
+            remove.innerHTML="Remove";
+            remove.setAttribute("class","remove");
+            bookListRow.appendChild(remove);
+
+            remove.addEventListener("click",function(e){
+                var target=e.target.parentNode;
+                target.remove(e);
+
+            })
+
+
+        }
+        bookList.appendChild(bookListRow);
+
+    })
+</script>
+</body>
+</html>
